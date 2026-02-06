@@ -6,7 +6,7 @@ from models import Base
 import os
 
 app = FastAPI()
-app.include_router(user_router)
+app.include_router(user_routes)
 
 if not os.path.exists("./test.db"):
     Base.metadata.create_all(bind=engine)
@@ -17,4 +17,5 @@ def read_root():
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="[0.0.0.0]", port=8000,reload=True)    
+    uvicorn.run(app, host=["0.0.0.0"], port=8000,reload=True)    
+    
